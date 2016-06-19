@@ -10,7 +10,7 @@ Disponibilizo um instância pública pronta para uso em: http://fatecsp-rss.jona
 
  - Clone ou baixe o repositório para o seu servidor http
  - Rode o comando "composer install" dentro da pasta
- - Pronto! Mas considere também considere os seguintes itens:
+ - Pronto! Mas considere também os seguintes itens:
    - Caso queria aterar as configurações disponíveis em configuracoes_default.php, 
      crie um arquivo configuracoes.php na mesma pasta e com a mesma estrutura
    - É melhor, em termos de segurança, apontar a raiz do servidor http para a pasta "public"
