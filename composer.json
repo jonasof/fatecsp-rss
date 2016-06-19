@@ -4,6 +4,6 @@
         "electrolinux/phpquery": "^0.9.6",
         "suin/php-rss-writer": "^1.4",
         "nesbot/carbon": "^1.21",
-        "voku/simple-cache": "^2.0"
+        "desarrolla2/cache": "^2.1"
     }
 }

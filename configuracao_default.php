@@ -7,10 +7,11 @@
 
 return [
     "url_pagina_alimentacao" => "http://www.fatecsp.br/?c=todosdestaques",
-    "debug" => false,
+    "debug" => true,
     "cache" => [
         "ativar" => true,
-        "duracao_minutos" => 600
+        "duracao_minutos" => 600,
+        "pasta" => __DIR__ . '/cache'
     ],
     "feed" => [
         "titulo" => 'Fatec/SP Destaques',

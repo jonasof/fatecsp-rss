@@ -19,7 +19,9 @@ use Suin\RSSWriter\Feed;
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Item;
 use Carbon\Carbon;
-use voku\cache\Cache;
+
+use Desarrolla2\Cache\Cache;
+use Desarrolla2\Cache\Adapter\File;
 
 (new RSSFatecSP($config))->gerarRSS();
 
@@ -27,11 +29,12 @@ class RSSFatecSP
 {
     public $itens = [];
     private $config = [];
-    private $cache;
+    private $cache = null;
 
     public function __construct($config) {
         $this->config = $config;
-        $this->cache = new Cache();
+        if ($this->config['cache']['ativar'])
+            $this->cache = new Cache(new File($config['cache']['pasta']));
     }
     
     public function gerarRSS()
@@ -134,12 +137,12 @@ class RSSFatecSP
     private function verificarCache() 
     {
         return ($this->config['cache']['ativar'])  ? 
-            $this->cache->getItem('html_cache') : null;
+            $this->cache->get('html_cache') : null;
     }
     
     private function salvarCache($html) 
     {
         if ($this->config['cache']['ativar'])
-            return $this->cache->setItem('html_cache', $html, $this->config['cache']['duracao_minutos'] * 60);
+            return $this->cache->set('html_cache', $html, $this->config['cache']['duracao_minutos'] * 60);
     }
 }
