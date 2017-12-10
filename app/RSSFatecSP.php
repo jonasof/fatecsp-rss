@@ -28,10 +28,10 @@ class RSSFatecSP
         {
             $list = $this->analisador->analisar(file_get_contents($this->config['url_pagina_alimentacao']));
             $renderizado = $this->gerador->gerar($list);
-            echo $renderizado;
+            return $renderizado;
             $this->cache->salvarCache($renderizado);
         } else {
-            echo $cache; 
+            return $cache; 
         }
     }
 }

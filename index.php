@@ -18,4 +18,5 @@ if ($config['debug'] === true) {
     ini_set("display_errors", true);
 }
 
-$container->get(RSSFatecSP::class)->gerarRSS();
+header('Content-Type: text/html; charset=utf-8');
+echo $container->get(RSSFatecSP::class)->gerarRSS();
