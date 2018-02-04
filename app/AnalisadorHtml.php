@@ -19,9 +19,9 @@ class AnalisadorHtml
         
         foreach (pq("article > article") as $string) {
             $itens[] = (object) [
-                "titulo" => pq($string)->find("h4")->text(),
+                "titulo" => pq($string)->find("a")->text(),
                 "descricao" => pq($string)->find("p")->text(),
-                "link" => $this->processarLink(pq($string)->find("h4 > a")->attr("href")),
+                "link" => $this->processarLink(pq($string)->find("a")->attr("href")),
                 "data" => pq($string)->find(".data")->text()
             ];
         }
@@ -38,7 +38,7 @@ class AnalisadorHtml
         
         if(preg_match("/(javascript:abredestaque\(([0-9]+)\))+/", $link)) {
             
-            $id = str_replace(["javascript:abredestaque(", ")"], "", $link);
+            $id = str_replace(["javascript:abredestaque(", ")", ";"], "", $link);
             return "http://fatecsp.br/destaques.php?not=" . $id;
         }
         
